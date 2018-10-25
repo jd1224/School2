@@ -1,0 +1,5 @@
+C 8230123345450 Flintstone Fred R 0 12 
+C 3873472785863 Simpson Lisa N 750 18 
+C 4834324308675 Jetson George R 0 20 
+O 1384349045225 Szyslak Moe - 6
+O 5627238253456 Flanders Ned T 3
