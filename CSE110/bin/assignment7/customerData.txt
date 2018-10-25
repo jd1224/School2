@@ -1,0 +1,7 @@
+Bob Sponge 111111111 3 4
+Pika Chu 222222222 6 5
+Charlie Brown 333333333 4 3
+Donald Trump 555666777 4 5
+Thomas Jefferson 666888999 16 5
+Snow White 777777777 43 23
+George Washington 888888888 2 4
