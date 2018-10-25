@@ -1,0 +1,31 @@
+2014 Employee Smith,John 1000
+2014 Executive Wayne,Bruce 1000 51
+2014 Executive Wayne,Bruce,JR 1000 50
+2014 Salesman Ford,Henry 1000 1000000
+2014 Salesman Ford,Henry,JR 1000 2000000
+2014 Salesman Ford,Henry,III 1000 0
+2015 Employee Smith,John 1000
+2015 Executive Wayne,Bruce 1000 51
+2015 Executive Wayne,Bruce,JR 1000 50
+2015 Salesman Ford,Henry 1000 1000000
+2015 Salesman Ford,Henry,JR 1000 2000000
+2015 Salesman Ford,Henry,III 1000 0
+x Employee Test,Bad 1000 100000
+2014 Employee Test,Bad x 
+2014 Employee Test,Bad
+2015 Employee Test,Bad x
+2015 Employee Test,Bad
+2014 x Test,Bad 1000 100000
+2014 Salesman Test,Bad x 100000
+2014 Salesman Test,Bad 1000 x
+2014 Salesman Test,Bad 1000
+2015 x Test,Bad 1000 100000
+2015 Salesman Test,Bad x 100000
+2015 Salesman Test,Bad 1000 x
+2015 Salesman Test,Bad 1000
+2014 Executive Test,Bad x 50
+2014 Executive Test,Bad 1000 x
+2014 Executive Test,Bad 1000
+2015 Executive Test,Bad x 50
+2015 Executive Test,Bad 1000 x
+2015 Executive Test,Bad 1000

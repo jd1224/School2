@@ -1,0 +1,12 @@
+
+public class Numbers{
+
+	private int[] array;
+	
+	public Numbers(int i){
+		
+		array = new int[i]
+	
+	}
+
+}
