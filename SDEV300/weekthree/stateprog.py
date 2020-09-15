@@ -331,6 +331,7 @@ def write_state_file():
     with open(STATE_FILE, 'w+', newline='') as outfile:
         for i in STATE_LIST:
             csv.writer(outfile).writerow(i.get_list())
+        outfile.close()
 
 
 def update_population(state):
