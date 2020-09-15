@@ -28,9 +28,16 @@ def print_head():
     print('** You can quit at any time by entering -q  **')
     print('**********************************************')
     print('----------------------------------------------')
-    if not MATRIX_TWO.size == 0:
-        print_both()
+    if not len(PHONE_NUMBER) == 0 and not len(ZIP_CODE) == 0:
+        print(f'Phone: {PHONE_NUMBER}      zip code: {ZIP_CODE}')
         print('----------------------------------------------')
+
+    if not MATRIX_TWO.size == 0:
+        print_arrays(MATRIX_ONE, 'Matrix One')
+        print('----------------------------------------------')
+        print_arrays(MATRIX_TWO, 'Matrix Two')
+        print('----------------------------------------------')
+
     elif not MATRIX_ONE.size == 0:
         print_arrays(MATRIX_ONE, 'Matrix One')
         print('----------------------------------------------')
@@ -134,7 +141,7 @@ def check_yes_no(prompt, choices):
             else:
                 choosing = False
     #return the chosen string after validation
-    return choice
+    return choice.lower()
 
 def want_to_play():
     '''
@@ -186,10 +193,11 @@ def get_zip():
     choosing = True
     global ZIP_CODE
     while choosing:
-        ZIP_CODE = input("Enter your zip code: ")
-        check_quit(ZIP_CODE)
+        zip_code = input("Enter your zip code: ")
+        check_quit(zip_code)
         #regex to validate a five or nine digit zip with or without a hyphen
-        if re.fullmatch(r'\d{5}([-\s])?(\d{4})?', ZIP_CODE):
+        if re.fullmatch(r'\d{5}([-\s])?(\d{4})?', zip_code):
+            ZIP_CODE = zip_code
             choosing = False
         else:
             if choice_count < 3:
@@ -239,12 +247,13 @@ def get_one_array(matrix, i):
         print_head()
         print(f'You\'re entering numbers for the {matrix}')
         print('This will be a three by three matrix. ')
-        print('You must enter three integers separated by spaces')
+        print('Enter three integers separated by spaces')
         print('----------------------------------------------')
         print(error)
         print("Please enter the values in the format 1 2 3.")
         #get a list of three integers from the user
         raw_input = input(f"Values for row {i+1}: ")
+        check_quit(raw_input)
         #check_quit(raw_input)
         #split the input on the spaces
         filler = raw_input.split(' ')
@@ -254,13 +263,10 @@ def get_one_array(matrix, i):
                 #cast the strings to ints
                 filler[j] = int(filler[j])
             except ValueError:
-                if choice_count > 3:
-                    choice_count += 1
-                    #if a non integer is detected, set this variable to trigger a failure
-                    #in the final check of this function
-                    non_int = True
-                    break
-                raise ValueError("You made too many bad choices! GoodBye!")
+                #if a non integer is detected, set this variable to trigger a failure
+                #in the final check of this function
+                non_int = True
+                break
         #if the length of the array is less than three restart the inner choice
         if len(filler) < 3:
             if choice_count < 3:
@@ -271,10 +277,11 @@ def get_one_array(matrix, i):
         #if a non-integer is detected restart the inner choice
         elif non_int:
             if choice_count < 3:
+                choice_count += 1
                 error = 'You have to include only integers!'
             else:
                 raise ValueError("You made too many bad choices! GoodBye!")
-        #if a 3 element integer array is entered, add it to the array_filler
+        #if a 3 element integer array is entered stop and return it
         else:
             inner_choosing = False
     return filler
@@ -416,6 +423,7 @@ def set_matrices():
         #call the functions to fill the matrices
         MATRIX_ONE = get_array('First Matrix')
         MATRIX_TWO = get_array('Second Matrix')
+        menu_screen()
     except ValueError as exception:
         leave_program(exception)
 
