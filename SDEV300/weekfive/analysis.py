@@ -3,10 +3,10 @@ Module to display a user friendly menu
 used to analyze the data of the two provided csv files
 will also take cli arguments to assign different files
 '''
-from population import Analyzer
 import platform
 from os import system
 import sys
+from analyzer import Analyzer
 
 def print_head():
     '''
@@ -19,7 +19,6 @@ def print_head():
     print('**     Welcome to the Analyzer Program      **')
     print('** You can quit at any time by entering -q  **')
     print('**********************************************')
-
 
 def clear_screen():
     '''
@@ -36,7 +35,6 @@ def clear_screen():
         _ = system('cls')
     else:
         _ = system('clear')
-
 
 def leave_program(message):
     '''
@@ -107,7 +105,7 @@ def menu_one(files):
     print('----------------------------------------------')
     counter = 1
     file_list = {}
-    for count, file_in in enumerate(files):
+    for file_in in files:
         print(f'{counter}. {file_in}')
         file_list[counter] = file_in
         counter += 1
@@ -126,19 +124,34 @@ def menu_one(files):
             leave_program("You made too many bad choices!")
 
 def menu_two(data, files):
+    '''
+    Function to parse the headers from the
+    dataframe and display the ones that are
+    contain numeric data as potential choices.
+    allows the user to choose a column for analysis
+    parameters:
+        data dataframe to be analyzed
+        files list of available data frames to pass
+            back to menu_one
+    '''
     print_head()
     print('----------------------------------------------')
-    print(data.name.center(46,'-'))
+    print(data.name.center(46, '-'))
     print('-  Choose a column to analyze from the list  -')
     print('----------------------------------------------')
     headers = data.headers()
     counter = 1
     header_list = {}
-    for count, header in enumerate(headers):
+    #check if columns are numeric
+    for header in headers:
         if data.type_check(header):
+            #print formatted columns in menu style
             print(f'{counter}. {header.title()}')
+            #add to dict to reference by counter number later
             header_list[counter] = header
+            #increment the counter to use as the next key
             counter += 1
+    #print the highest number as the go back function
     print(f'{counter}. Go Back <--')
     choice_count = 0
     choosing = True
@@ -156,39 +169,59 @@ def menu_two(data, files):
         else:
             leave_program("You made too many bad choices!")
 
-
-def display(data, row, files):
+def display(data, col, files):
+    '''
+    Function to retrieve and display all of the data
+    from a chosen dataframe and column
+    Parameters:
+        data dataframe to be analyzed
+        col column name to be analyzed
+        files list of files to pass back at the end
+    '''
     print_head()
-    row_title = f'{row.title()} Column'
+    col_title = f'{col.title()} Column'
     print('----------------------------------------------')
-    print(data.name.center(46,'-'))
-    print(row_title.center(46,'-'))
-    print('-  Choose a column to analyze from the list  -')
+    print(data.name.center(46, '-'))
+    print(col_title.center(46, '-'))
     print('----------------------------------------------')
-    print(f'Rows of Data: {data.row_count(row)}\n\
-Mean Value: {data.row_mean(row)}\n\
-Standard Deviation: {data.row_std(row)}\n\
-Minimum Value: {data.row_min(row)}\n\
-Maximum Value: {data.row_max(row)}')
+    #Retrieve and print the fomatted output for the functions
+    print(f'cols of Data: {data.col_count(col)}\n\
+Mean Value: {data.col_mean(col)}\n\
+Standard Deviation: {data.col_std(col)}\n\
+Minimum Value: {data.col_min(col)}\n\
+Maximum Value: {data.col_max(col)}')
     input('Press enter to see a histogram of this data:')
-    data.histogram(row)
+    #display a histogram of the data
+    data.histogram(col)
     menu_two(data, files)
 
 def file_list_builder():
+    '''
+    Function to build the list of files that will be
+    passed into the menu_one to start the program.
+    '''
+    #list of default files
     listeroo = ['data/Housing.csv', 'data/PopChange.csv']
-    bad_list =[]
-    if len(sys.argv)>1:
-        for i in range(1,len(sys.argv)):
+    #if any command line arguments are entered, parse them
+    #and add them to the list
+    if len(sys.argv) > 1:
+        for i in range(1, len(sys.argv)):
             listeroo.append(sys.argv[i])
     out_list = []
+    #loop to attempt to create new Analyzers
     for i in listeroo:
         try:
             i = Analyzer(i)
             out_list.append(i)
-        except Exception as e:
-            input(f"{i} could not be used.")
+        #accept errors and move on with the loop
+        except FileNotFoundError:
+            input(f"{i.split('/')[-1]} could not be found.")
+        except PermissionError:
+            input(f"{i.split('/')[-1]} permission denied.")
+        except Exception as e_x:
+            input(f"{i.split('/')[-1]} Unkown Exception\n{e_x}")
     return out_list
 
-
-file_list = file_list_builder()
-menu_one(file_list)
+if __name__ == "__main__":
+    file_listeroo = file_list_builder()
+    menu_one(file_listeroo)

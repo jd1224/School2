@@ -23,10 +23,8 @@ class Analyzer:
             turned into a dataframe
         '''
         self.path = path
-        try:
-            self.frame = pd.read_csv(path)
-        except FileNotFoundError:
-            raise Exception(self.path)
+
+        self.frame = pd.read_csv(path)
 
         self.name = f"Analyzer for {(path.split('/'))[-1]}"
 
@@ -36,54 +34,54 @@ class Analyzer:
         '''
         return self.name
 
-    def row_count(self, row):
+    def col_count(self, col):
         '''
-        return the row count of the given row
+        return the col count of the given col
         parameters:
-            row to be used in the function
+            col to be used in the function
         '''
-        return self.frame[row].count()
+        return self.frame[col].count()
 
 
-    def row_mean(self, row):
+    def col_mean(self, col):
         '''
-        return the mean of the given row
+        return the mean of the given col
         parameters:
-            row to be used in the function
+            col to be used in the function
         '''
-        return f'{self.frame[row].mean():.2f}'
+        return f'{self.frame[col].mean():.2f}'
 
-    def row_std(self, row):
+    def col_std(self, col):
         '''
-        return the row standard deviation of the given row
+        return the col standard deviation of the given col
         parameters:
-            row to be used in the function
+            col to be used in the function
         '''
-        return f'{self.frame[row].std():.2f}'
+        return f'{self.frame[col].std():.2f}'
 
-    def row_min(self, row):
+    def col_min(self, col):
         '''
-        return the minimum value of the given row
+        return the minimum value of the given col
         parameters:
-            row to be used in the function
+            col to be used in the function
         '''
-        return self.frame[row].min()
+        return self.frame[col].min()
 
-    def row_max(self, row):
+    def col_max(self, col):
         '''
-        return the maximum value of the given row
+        return the maximum value of the given col
         parameters:
-            row to be used in the function
+            col to be used in the function
         '''
-        return self.frame[row].max()
+        return self.frame[col].max()
 
-    def histogram(self, row):
+    def histogram(self, col):
         '''
-        displays a histogram of the given row
+        displays a histogram of the given col
         parameters:
-            row to be displayed
+            col to be displayed
         '''
-        self.frame.hist(row)
+        self.frame.hist(col)
         plt.show()
 
     def headers(self):
@@ -93,12 +91,12 @@ class Analyzer:
         '''
         return list(self.frame.columns.values)
 
-    def type_check(self, row):
+    def type_check(self, col):
         '''
-        returns boolean whether the row is numeric
+        returns boolean whether the col is numeric
         parameters:
-            row to be checked
+            col to be checked
         returns:
-            bool whether the row is numeric or not
+            bool whether the col is numeric or not
         '''
-        return is_numeric_dtype(self.frame[row])
+        return is_numeric_dtype(self.frame[col])
