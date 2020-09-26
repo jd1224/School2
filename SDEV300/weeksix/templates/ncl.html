@@ -1,0 +1,58 @@
+<!doctype html>
+{% extends 'main.html' %}
+{% block content %}
+<!--Logic to determine what the main header will be
+if the date is in the future then it will be the first
+one.  If is it passed it will tell how many days ago it
+started with the second block.
+-->
+{% if delta < 0 %}
+    <h1>T {{delta}} days until the NCL individual game kicks off.</h1>
+{% else %}
+    <h1>The individual game started {{delta}} days ago.</h1>
+{% endif %}
+<!--Card column with the required ordered and unordered lists-->
+<div class="card-columns">
+    <div class="card bg-secondary">
+      <div class="card-body text-center">
+        <h2 class="card-text">How to sign up for the NCL</h2>
+        <ol>
+            <li><a href="https://nationalcyberleague.org/" target="null">Visit the webiste</a></li> 
+            <li>Click the register here button</li>
+            <li>Click register now on the cyberskline page</li>
+            <li>Create an account</li>
+            <li>Pay for the competition</li>
+        </ol>
+      </div>
+    </div>
+    <div class="card bg-secondary">
+      <div class="card-body text-center">
+        <h2 class="card-text">Why you should try the competition.</h2>
+        <ul>
+            <li>It's a fun way to learn and apply new skills</li>
+            <li>Opportunities to work on problems from the real world</li>
+            <li>Work towards a goal with a team of other students</li>
+            <li>Access to a wide range of training material in one place</li>
+            <li>A graded "scouting report" issued at the end to show employers</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card bg-secondary">
+      <div class="card-body text-center">
+        <h2 class="card-text">Training topics include</h2>
+        <ul>
+            <li>Reverse engineering</li>
+            <li>Wireless penetration testing</li>
+            <li>Password cracking</li>
+            <li>Log analysis and investigation</li>
+            <li>Website penetration testing</li>
+        </ul>
+      </div>
+    </div>
+</div>
+<!--image to span the bottom of the page-->
+<div class="row" style="width:100%;">
+    <img src="/static/img/ncllg.jpg" style="width:100%; align-content: center;">
+</div>
+
+{% endblock %}

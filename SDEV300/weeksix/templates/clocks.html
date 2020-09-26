@@ -1,0 +1,79 @@
+<!doctype html>
+{% extends 'main.html' %}
+{% block content %}
+<!--The code below is form w3schools.com it creates
+a nice looking row of responsive cards to display the
+time objects that are passed into this template -->
+<h1>Here are some times that you may like to see.</h1>
+<div class="card-columns">
+    <div class="card bg-primary">
+      <div class="card-body text-center">
+        <h2 class="card-text">An hour before that it was: {{before}}</h2>
+      </div>
+    </div>
+    <div class="card bg-warning">
+      <div class="card-body text-center">
+        <h2 class="card-text">You came to this page at: {{now}}</h2>
+      </div>
+    </div>
+    <div class="card bg-success">
+      <div class="card-body text-center">
+        <h2 class="card-text">An hour after that will be: {{later}}</h2>
+      </div>
+    </div>
+  </div>
+<h1>Where did time come from?</h1>
+<!--Most of the text in the cards below is taken from 
+https://www.reference.com/history/invented-time-791c2460ba698252
+-->
+<div class="card-columns">
+    <div class="card text-white bg-dark mb-3" style="card_column">
+        <img class="card-img-top" src="/static/img/cavemen.jpg" alt="Cavemen">
+        <div class="card-body">
+          <h4 class="card-title">Cavemen</h4>
+          <p class="card-text">Human beings first noticed the passage of time by the passage of the sun, moon and stars in the prehistoric era some 30,000 years ago.</p>
+        </div>
+      </div>
+      <div class="card text-white bg-dark mb-3" style="card_column">
+        <img class="card-img-top" src="/static/img/babylonian2.jpg" alt="Babylonians">
+        <div class="card-body">
+          <h4 class="card-title">Babylonians</h4>
+          <p class="card-text">The ancient Babylonians first developed a mathematical system based on the number 60 and a year of 360 days, by around 1600 B.C.E.</p>
+        </div>
+      </div>
+      <div class="card text-white bg-dark mb-3" style="card_column">
+        <img class="card-img-top" src="/static/img/egypt2.jpg" alt="Egyptians">
+        <div class="card-body">
+          <h4 class="card-title">Egyptians</h4>
+          <p class="card-text">Ancient Egyptians were known to have built sundials as early as 1500 B.C.E. In ancient times, basing the measurement of time on celestial bodies was seasonal.</p>
+        </div>
+      </div>
+</div>
+<div class="card-columns">
+    <div class="card text-white bg-dark mb-3" style="card_column">
+        <img class="card-img-top" src="/static/img/galileo2.jpg" alt="Cavemen">
+        <div class="card-body">
+          <h4 class="card-title">Galileo</h4>
+          <p class="card-text">With the invention of the pendulum by Galileo Galilei, in the 17th century, the concept of time began to change and become more precise and consistent.</p>
+        </div>
+      </div>
+      <div class="card text-white bg-dark mb-3" style="card_column">
+        <a href="https://time.gov/" target="null">
+            <img class="card-img-top" src="/static/img/us2.png" alt="Galileo Figaro">
+        </a>
+        <div class="card-body">
+          <h4 class="card-title">Time.gov</h4>
+          <p class="card-text">The US Government hosts a website which has the official time for the entire country.  Click the map to visit the site now!</p>
+        </div>
+      </div>
+      <div class="card text-white bg-dark mb-3" style="card_column">
+        <a href="https://www.pool.ntp.org/zone/us" target="null">
+            <img class="card-img-top" src="/static/img/ntp2.jpg" alt="Netowrk time">
+        </a>
+        <div class="card-body">
+          <h4 class="card-title">Network Time</h4>
+          <p class="card-text">Network Time Protocol or NTP helps computers stay on the same time so that they can connect correctly. Click the picture to find an NTP server!</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+<!doctype html>
+{% extends 'main.html' %}
+{% block content %}
+<h1>Welcome to my Flask Project for SDEV300.</h1>
+<h1>Check out the page on time, or the page about the National Cyber League.</h1>
+<div class="card-columns">
+    <div class="card text-white bg-dark mb-3" style="card_column">
+        <a href="{{url_for('clocks')}}">
+            <img class="card-img-top" src="/static/img/clock2.jpg" alt="Clock">
+        </a>
+        <div class="card-body">
+          <h4 class="card-title">Time</h4>
+          <p class="card-text">Want to know what time it is where I am?  Click the picture to find out, and learn a bit about the origin of time.</p>
+        </div>
+      </div>
+      <div class="card text-white bg-dark mb-3" style="card_column">
+        <a href="{{url_for('ncl')}}">
+            <img class="card-img-top" src="/static/img/ncl2.jpg" alt="Babylonians">
+        </a>
+        <div class="card-body">
+          <h4 class="card-title">National Cyber League</h4>
+          <p class="card-text">The National Cyber League is a cybersecurity competition for students.  Click the picture to learn more about this event including how to sign up.
+          </p>
+        </div>
+      </div>
+      <div class="card text-white bg-dark mb-3" style="card_column">
+        <a href="https://github.com/jd1224" target="null">
+            <img class="card-img-top" src="/static/img/git2.jpg" alt="Egyptians">
+        </a>
+        <div class="card-body">
+          <h4 class="card-title">Github</h4>
+          <p class="card-text">This is a link to my personal github account.  Some of my repositories may be useful to you.  Click the picture to go to my page.</p>
+        </div>
+      </div>
+</div>
+{% endblock %}
