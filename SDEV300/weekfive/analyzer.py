@@ -6,7 +6,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from pandas.api.types import is_numeric_dtype
 
-
 class Analyzer:
     '''
     Class to read a csv file and format it into a dataframe
@@ -41,7 +40,6 @@ class Analyzer:
             col to be used in the function
         '''
         return self.frame[col].count()
-
 
     def col_mean(self, col):
         '''

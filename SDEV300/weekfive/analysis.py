@@ -218,6 +218,8 @@ def file_list_builder():
             input(f"{i.split('/')[-1]} could not be found.")
         except PermissionError:
             input(f"{i.split('/')[-1]} permission denied.")
+        except UnicodeDecodeError:
+            input(f"{i.split('/')[-1]} is not a valid .csv file.")
         except Exception as e_x:
             input(f"{i.split('/')[-1]} Unkown Exception\n{e_x}")
     return out_list
