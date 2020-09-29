@@ -1,10 +1,14 @@
 <!doctype html>
+<!--Extend teh main template to pull in the header and stylesheets-->
 {% extends 'main.html' %}
 {% block content %}
 <h1>Welcome to my Flask Project for SDEV300.</h1>
 <h1>Check out the page on time, or the page about the National Cyber League.</h1>
 <div class="card-columns">
     <div class="card text-white bg-dark mb-3" style="card_column">
+      <!--Use the variable location for the url
+      which will allow me to change this in the
+      routes.py file if it needs to be changed-->
         <a href="{{url_for('clocks')}}">
             <img class="card-img-top" src="/static/img/clock2.jpg" alt="Clock">
         </a>
@@ -24,6 +28,7 @@
         </div>
       </div>
       <div class="card text-white bg-dark mb-3" style="card_column">
+        <!--link to first external site-->
         <a href="https://github.com/jd1224" target="null">
             <img class="card-img-top" src="/static/img/git2.jpg" alt="Egyptians">
         </a>

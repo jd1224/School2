@@ -49,11 +49,8 @@ def clear_screen():
     system architecture is used.
     used to clean up input and stop it from
     leaving a long string text
-
     '''
-
     systems = platform.system()
-
     if systems == 'Windows':
         _ = system('cls')
     else:

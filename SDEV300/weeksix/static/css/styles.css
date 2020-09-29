@@ -8,11 +8,17 @@ a:link{
     color: rgb(165, 221, 165);
 }
 a:visited{
-    color: black
+    color: black;
 }
 a:hover{
     color: brown;
 }
 a:active{
     color: crimson;
+}
+ul{
+    text-align: left;
+}
+ol{
+    text-align: left;
 }
