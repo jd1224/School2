@@ -22,6 +22,7 @@ def ncl():
     today = datetime.datetime.today()
     then = datetime.datetime.strptime("2020-10-23", "%Y-%m-%d")
     delta = (today - then).days
+    #delta = (then - today).days #uncomment this line to test logic
     return render_template('ncl.html', delta=delta)
 
 
