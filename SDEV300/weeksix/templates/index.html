@@ -2,8 +2,16 @@
 <!--Extend teh main template to pull in the header and stylesheets-->
 {% extends 'main.html' %}
 {% block content %}
+<h1 class="text-danger">
+{% if error %}
+  {{error}}
+{% endif %}
+</h1>
 <h1>Welcome to my Flask Project for SDEV300.</h1>
 <h1>Check out the page on time, or the page about the National Cyber League.</h1>
+{% if 'id' not in session %}
+  <h2 class="text-warning" style="text-align: center;">Please login or sign up to view these pages</h2>
+{% endif %}
 <div class="card-columns">
     <div class="card text-white bg-dark mb-3" style="card_column">
       <!--Use the variable location for the url
