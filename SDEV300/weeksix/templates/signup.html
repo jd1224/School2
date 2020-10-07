@@ -1,6 +1,15 @@
 {% extends 'main.html' %}
 {% block content %}
 <h1>Signup {{req}}</h1>
+<p style="text-align: center;">Password must be 12 charachters and must contain:</p>
+
+    <ul style="text-align: center;list-style-type: none;">
+        <li>One uppercase</li>
+        <li>One lowercase</li>
+        <li>One number</li>
+        <li>One special character</li>
+    </ul>
+
     <div style="margin: auto; background-color: gray; width: 33%;text-align: center;">
         <div style="margin: auto; background-color:gray; width: 70%;text-align: center;">
             <form method="POST" action="/signup">
@@ -16,7 +25,6 @@
                 <button type="submit" class="btn btn-dark">Submit</button>
             </form>
         </div>
-        
     </div>
 
 {% endblock %}

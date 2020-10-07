@@ -1,5 +1,6 @@
 from passlib.context import CryptContext
 import csv
+import string
 
 class User_methods:
     
@@ -54,8 +55,10 @@ class User_methods:
         return(self.user in usernames)
 
     def create_users(self):
-        print(self.check_email_registered())
-        print(self.check_user_registered())
+        try:
+            self.password_validate()
+        except ValueError as e:
+            raise ValueError(e)
         if not self.check_email_registered() and not self.check_user_registered():
             hashed_password = self.hash_password()
             data = [self.user,self.email,hashed_password]
@@ -65,7 +68,20 @@ class User_methods:
         else:
             raise Exception("User Already Exists!")
         
+    def password_validate(self):
+        word = self.password
+        if len(word) < 12:
+            raise ValueError("Insufficient Length")
+        if not any(char in string.ascii_lowercase for char in word):
+            raise ValueError("Must contain a lowercase letter.")
+        if not any(char in string.ascii_uppercase for char in word):
+            raise ValueError("Must contain an uppercase letter.")
+        if not any(char in string.digits for char in word):
+            raise ValueError("Must contain a number.")
+        if not any(char in string.punctuation for char in word):
+            raise ValueError("Must contain a special character.")
 
+        
     def hash_password(self):
 
         return self.CONTEXT.hash(self.password)
@@ -73,10 +89,3 @@ class User_methods:
     def verify_password(self, hashed):
 
         return self.CONTEXT.verify(self.password, hashed)
-try:
-    user1 = User_methods('doug','d@d.com','pas')
-    user1.create_users()
-except Exception as e:
-    print(e)
-
-print(user1.authenticate_user())

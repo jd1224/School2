@@ -77,6 +77,12 @@ def signup():
 
     return render_template('signup.html')
 
+@app.route('/states')
+def states():
+    if 'id' in session:
+        return render_template('states.html')
+    return render_template('index.html', error=LOGIN_ERROR)
+
 @app.route('/signin', methods = ['POST'])
 def signin():
     username = request.form.get("username")
@@ -94,8 +100,4 @@ def signout():
     session.pop('id', None)
     return redirect('/')
 
-def authenticated_decorator(route):
-    if 'id' in session:
-        return route
-    return render_template('index.html', LOGIN_ERROR)
 app.run(debug=True)
