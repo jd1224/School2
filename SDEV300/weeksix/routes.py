@@ -5,13 +5,10 @@ import datetime
 from datetime import timedelta
 from flask import Flask
 from flask import render_template
-import passlib
 from flask import redirect
-from flask import url_for
 from flask import request
 from flask import session
-import csv
-from users import User_methods
+from users import UserMethods
 
 app = Flask(__name__)
 app.secret_key = 'superkalfragilisticexpialadocious'
@@ -21,9 +18,6 @@ LOGIN_ERROR = "Request denied, You Must Login for That Page."
 def index():
     '''render the index page'''
     return render_template('index.html')
-
-    
-    
 
 @app.route('/ncl/')
 def ncl():
@@ -68,35 +62,49 @@ def signup():
         email = request.form.get("email")
         password = request.form.get("password")
         try:
-            user = User_methods(username,email,password)
+            user = UserMethods(username, email, password)
             user.create_users()
             session['id'] = username
             return redirect('/')
-        except Exception as e:
-            return render_template('signup.html', req=e)
+        except ValueError as exception:
+            return render_template('signup.html', req=exception)
 
     return render_template('signup.html')
 
 @app.route('/states')
 def states():
+    '''
+    render the states page if the user
+    is logged in
+    '''
     if 'id' in session:
         return render_template('states.html')
     return render_template('index.html', error=LOGIN_ERROR)
 
-@app.route('/signin', methods = ['POST'])
+@app.route('/signin', methods=['POST'])
 def signin():
+    '''
+    signin function to allow the user
+    to sign in using the user_method
+    authenticate function
+    '''
     username = request.form.get("username")
     password = request.form.get("password")
     try:
-        user = User_methods(username,'dummy',password)
-        user.authenticate_user()
+        user1 = UserMethods(username, 'dummy', password)
+        user1.authenticate_user()
         session['id'] = username
         return redirect('/')
-    except Exception as e:
-        return render_template('index.html', error=e)
+    except ValueError as exception:
+        return render_template('index.html', error=exception)
 
 @app.route('/signout', methods=['POST'])
 def signout():
+    '''
+    sign the user out by
+    popping the session id from
+    the session list
+    '''
     session.pop('id', None)
     return redirect('/')
 

@@ -1,8 +1,2 @@
 username,email,password_hash
-Joshua,joshua.coe@gmail.com,$pbkdf2-sha256$5000$Wst5L.U8x1hLSQmh1Lp3zg$bbXnpvKV1Gie1TB6xA8KsLlfX9wKXYrelBtL8uuwXMw
-collin,no@way.com,$pbkdf2-sha256$5000$qlUq5RxDSKkVYsxZ6x0DQA$s/YEWnO0OxXMsCxOQ9wSDNGLNeqxS6RROZJkGd5f0ik
-turd ferguson,dong@butts.cum,$pbkdf2-sha256$5000$KAWA0NqbM8a419r7H6PUeg$Da8lo.xeNbAUBzyRRm2a6XNVFfPBZ8JlfJiareugMQs
-Josh,j@c.com,$pbkdf2-sha256$5000$cY4xphQCYAxhrHVOaU1JCQ$eKku1ifVoWyQ7r.bQyFr1Nr9gcQHemZFfVslvYayIgo
-brent,b@c.com,$pbkdf2-sha256$5000$XOvd21vL2bs3xnjPOaf0vg$HkjguxqkABMWTAHqmfV/c2py6BgE1KcBHcKRZ0aqgf0
-JCOE9,joshua.coe11@yahoo.com,$pbkdf2-sha256$5000$793bOyckhFAqhRAC4HyvdQ$QeIEGde/p26edKQpA88uJO3rKVo.y7dvth2xkQUYnlg
-doug,d@d.com,$pbkdf2-sha256$5000$ICSklDLGGKNUipFyrpVyrg$DZ5EuCB.DVUZsH6EouFVX0dk2g1/tSSvGEFBdlB0N/A
+JCOE9,jcoe9@student.umgc.edu,$pbkdf2-sha256$5000$vzemdK41htDa.5.zFsIY4w$YgmDpVRUgcS6ipHP4r8/V/RwodI9CepFspCMjiA8GNs
