@@ -1,2 +1,4 @@
 username,email,password_hash
-JCOE9,jcoe9@student.umgc.edu,$pbkdf2-sha256$5000$vzemdK41htDa.5.zFsIY4w$YgmDpVRUgcS6ipHP4r8/V/RwodI9CepFspCMjiA8GNs
+jcoe9,jcoe9@student.umgc.edu,"$bcrypt-sha256$v=2,t=2b,r=13$WXbXekZRZ/pD2lfyiEujVO$zLKAWQCCa01ehx6vJOOqS9u.lEWCoJK"
+testuser,test@user.com,"$bcrypt-sha256$v=2,t=2b,r=13$ze.HloN/Ue5g79JOCq5zy.$/0DhjnBCAaoPEp2mWG3gclhJST6Pfm."
+doug,doug@doug.com,"$bcrypt-sha256$v=2,t=2b,r=13$4x7Iog6rfZ8YuUFGMe0Hau$4CDiOi1rbvwtQl6lTRI.utViBKpXjBe"

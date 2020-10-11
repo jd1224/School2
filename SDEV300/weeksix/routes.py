@@ -13,6 +13,8 @@ from users import UserMethods
 app = Flask(__name__)
 app.secret_key = 'superkalfragilisticexpialadocious'
 LOGIN_ERROR = "Request denied, You Must Login for That Page."
+LOG_FILE = 'authlog.log'
+LOG_FMT = "%b %d %H:%M:%S"
 
 @app.route('/')
 def index():
@@ -65,9 +67,13 @@ def signup():
             user = UserMethods(username, email, password)
             user.create_users()
             session['id'] = username
+            log_event(f'{datetime.datetime.now().strftime(LOG_FMT)}:\
+ Account created for {username} from {request.remote_addr}')
+            log_event(f'{datetime.datetime.now().strftime(LOG_FMT)}:\
+ Login success for {username} from {request.remote_addr}')
             return redirect('/')
         except ValueError as exception:
-            return render_template('signup.html', req=exception)
+            return render_template('signup.html', req=exception, color='text-danger')
 
     return render_template('signup.html')
 
@@ -94,8 +100,12 @@ def signin():
         user1 = UserMethods(username, 'dummy', password)
         user1.authenticate_user()
         session['id'] = username
+        log_event(f'{datetime.datetime.now().strftime(LOG_FMT)}:\
+ Login success for {username} from {request.remote_addr}')
         return redirect('/')
     except ValueError as exception:
+        log_event(f'{datetime.datetime.now().strftime(LOG_FMT)}:\
+ Failed password for {username} from {request.remote_addr}')
         return render_template('index.html', error=exception)
 
 @app.route('/signout', methods=['POST'])
@@ -105,7 +115,59 @@ def signout():
     popping the session id from
     the session list
     '''
+    log_event(f"{datetime.datetime.now().strftime(LOG_FMT)}:\
+ Session ended for {session['id']} from {request.remote_addr}")
     session.pop('id', None)
     return redirect('/')
 
-app.run(debug=True)
+@app.route('/passchange')
+def passchange():
+    '''render the passchange form'''
+    if 'id' in session:
+        return render_template('passchange.html')
+    return render_template('index.html', error=LOGIN_ERROR)
+
+@app.route('/changepass', methods=['POST'])
+def change_pass():
+    '''
+    function to change the password using the UserMethods
+    class
+    '''
+    #create variables and fill with form data
+    username = session['id']
+    old_pass = request.form.get('password')
+    new_pass = request.form.get('new_pass')
+    new_pass_conf = request.form.get('new_pass_conf')
+    #stringout = f'{username} / {old_pass} / {new_pass} / {new_pass_conf}'
+    try:
+        #create a user
+        user1 = UserMethods(username, 'dummy', old_pass)
+        #authenticate the user
+        user1.authenticate_user()
+        #make sure the new password and confirm fields match
+        if new_pass == new_pass_conf:
+            user1.password_validate(new_pass)
+            user1.change_password(new_pass)
+            log_event(f'{datetime.datetime.now().strftime(LOG_FMT)}:\
+ Password changed for {username} from {request.remote_addr}')
+        else:
+            raise ValueError("New password did not match confirmation field")
+    #handle any ValueErrors and return the exception message with the danger color
+    except ValueError as exception:
+        log_event(f'{datetime.datetime.now().strftime(LOG_FMT)}:\
+ Failed password change for {username} from {request.remote_addr}')
+        return render_template('passchange.html', req=exception, color='text-danger')
+    #if all checks work return the success message on the pass change page with the info color
+    return render_template('passchange.html', req="Password Successfully Changed"\
+, color='text-info')
+
+def log_event(event):
+    '''
+    method to log events to the
+    LOG_FILE location
+    '''
+    with open(LOG_FILE, 'a') as logs:
+        logs.write(event)
+        logs.write('\n')
+
+app.run(host='192.168.1.111', debug=True)
