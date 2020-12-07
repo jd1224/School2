@@ -100,7 +100,7 @@ where FID = 1;
 
 update Engineers
 set firstname = 'Amadeus'
-where EID = 1;
+where EID = 2;
 
 update classes
 set subject = 'IOT Cyber'
