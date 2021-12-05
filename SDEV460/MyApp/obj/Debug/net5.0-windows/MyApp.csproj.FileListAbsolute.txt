@@ -1,0 +1,16 @@
+C:\Users\joshu\Desktop\Projects\School2\SDEV460\MyApp\bin\Debug\net5.0-windows\MyApp.exe
+C:\Users\joshu\Desktop\Projects\School2\SDEV460\MyApp\bin\Debug\net5.0-windows\MyApp.deps.json
+C:\Users\joshu\Desktop\Projects\School2\SDEV460\MyApp\bin\Debug\net5.0-windows\MyApp.runtimeconfig.json
+C:\Users\joshu\Desktop\Projects\School2\SDEV460\MyApp\bin\Debug\net5.0-windows\MyApp.runtimeconfig.dev.json
+C:\Users\joshu\Desktop\Projects\School2\SDEV460\MyApp\bin\Debug\net5.0-windows\MyApp.dll
+C:\Users\joshu\Desktop\Projects\School2\SDEV460\MyApp\bin\Debug\net5.0-windows\ref\MyApp.dll
+C:\Users\joshu\Desktop\Projects\School2\SDEV460\MyApp\bin\Debug\net5.0-windows\MyApp.pdb
+C:\Users\joshu\Desktop\Projects\School2\SDEV460\MyApp\obj\Debug\net5.0-windows\MyApp.csproj.AssemblyReference.cache
+C:\Users\joshu\Desktop\Projects\School2\SDEV460\MyApp\obj\Debug\net5.0-windows\MyApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joshu\Desktop\Projects\School2\SDEV460\MyApp\obj\Debug\net5.0-windows\MyApp.AssemblyInfoInputs.cache
+C:\Users\joshu\Desktop\Projects\School2\SDEV460\MyApp\obj\Debug\net5.0-windows\MyApp.AssemblyInfo.cs
+C:\Users\joshu\Desktop\Projects\School2\SDEV460\MyApp\obj\Debug\net5.0-windows\MyApp.csproj.CoreCompileInputs.cache
+C:\Users\joshu\Desktop\Projects\School2\SDEV460\MyApp\obj\Debug\net5.0-windows\MyApp.dll
+C:\Users\joshu\Desktop\Projects\School2\SDEV460\MyApp\obj\Debug\net5.0-windows\ref\MyApp.dll
+C:\Users\joshu\Desktop\Projects\School2\SDEV460\MyApp\obj\Debug\net5.0-windows\MyApp.pdb
+C:\Users\joshu\Desktop\Projects\School2\SDEV460\MyApp\obj\Debug\net5.0-windows\MyApp.genruntimeconfig.cache
